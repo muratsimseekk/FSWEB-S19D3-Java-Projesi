@@ -1,49 +1,108 @@
-# JWT AUTHENTICATION
-Authentication &amp; Authorization with JWT token
+# SQL Sorgu Alıştırmaları
 
-### Proje Kurulumu
+Bu hafta SQL sorguları üzerine çalışıyorsunuz. Bugünkü alıştırmada sizin için hazırladığımız veritabanında aşağıda istediğimiz sonuçları elde etmenize yarayan SQL sorgularını oluşturacaksınız.
 
-Projeyi öncelikle forklayın ve clone edin.
-Daha sonra projeyi IntellijIDEA kullanarak açınız. README.md dosyasını dikkatli bir şekilde okuyarak istenenleri yapmaya çalışın.
-Proje sayımız ilerledikçe proje yönetimimizi kolaylaştırmak adına projelerimizi belli klasör kalıplarında saklamak işimizi kolaylaştırmak adına iyi bir alışkanlıktır.
-Örnek bir Lokasyon: Workintech/Sprint_1/Etud.
+# Proje Kurulumu
+Projeyi forklayın ve clonlayın. Tamamladığınızda da pushlayın.
 
- ### Başlangıç
- * Spring Initializr kullanarak bir Spring Boot projesi oluşturun.
- * İçerisinde ```Spring Web```,  ```Spring Security``` dependency eklenmeli.
- * Maven dependency management sistemini kullanarak tüm dependencyleri install edin.
- * Uygulamanızı  ```9000``` portundan ayağa kaldırın.
- * JWT token kullanımını tanımak üzerine bir api yazmalıyız.
+## Kütüphane Bilgi Sistemi
 
-### Amaç
- * Amacımız JWT token kullanarak user role ilişkisi işe ulaşabileceğimiz rest apiler tanımlamak.
- * JWT token oluşturan ve validasyonu yapan kodu siz hazırlamalısınız.
- * JWT token ile role tabanlı authentication ve authorization işlemlerin nasıl yapıldığını anlamalıyız.
- 
- ### Görev 1
- * main metodunuzun olduğu paket altında ```config```, ```controller```, ```entity```, ```dao```, ```service``` isminde 5 adet daha paket oluşturunuz.
- * Project Lombok'u dependency olarak uygulamanıza ekleyin.
- * ```entity``` paketinin altına ```Member``` adında bir sınıf tanımlayınız. İçerisinde instance variable olarak ```id, firstName, lastName, email, password``` isminde 5 tane değişken oluşturun.
- * ```entity``` paketinin altına JDBCAuthentication için ```Role``` adında bir sınıf oluşturunuz içerisine ```id, authority``` adında 2 field ekleyiniz. Member ve Role arasında many-to-many bir ilişki tanımlamalısınız.
- * ```Role``` enum tipinde olmalı. ```USER ve ADMIN``` değerlerini alır.
- * ```Student``` isminde bir sınıf yazınız. ```id, tckn, firstName, lastName``` değerleri olmalı.
- * Lombok ve JPA annotation larını uygulayarak bütün sınıfı bir veritabanı tablosu olucak şekilde işaretleyiniz.
- * ```application.properties``` dosyanızı kullanarak veritabanı bağlantınızı kurun.
- * Spring uygulamasının veritabanı loglarını açarak veritabanına yolladığınız her sorguyu inceleyin.
+Bu veritabanı, bir okulun kütüphanesinden öğrencilerin aldıkları kitapların bilgisini barındırmaktadır.
 
-### Görev 2
- * Service ve Dao paketi katmanlarını yazmalısınız. 
- * Student objesi MVC kurallarına uygun olarak veritabanı işlemlerini yapabilmeli.
- * CRUD işlemlerini Service katmanı karşılayabilmeli
+#Tablolar 
+`ogrenci` tablosu öğrencilerin listesini tutar.
+`islem` tablosu öğrencilerin kütüphaneden aldıkları kitapların bilgilerini tutar
+`kitap` tablosu kütüphanedeki kitapların bilgisini tutar
+`yazar` tablosu kitapların yazarları bilgisini tutar
+`tur` tablosu kitapların türlerini tutar.
 
- ### Görev 3
- * ```controller``` paketi altında ```StudentController``` adında 1 tane controller yazmalısınız.
- * StudentService sınıfını StudentController sınıfı altında ```Dependency Injection``` yöntemini kullanarak çağırınız.
- * Amacımız CRUD işlemlerini tanımlayan endpointler yazmak.
- * [GET]/workintech/students/ => tüm burger listini dönmeli.
- * [GET]/workintech/students/{id} => İlgili id deki burger objesini dönmeli.
- * [POST]/workintech/students => Bir adet burger objesini veritabanına kaydeder.
- * [PUT]/workintech/students/{id} => İlgili id deki burger objesinin değerlerini yeni gelen data ile değiştirir.
- * [DELETE]/workintech/students/{id} => İlgili id değerindeki burger objesini veritabanından siler.
- * role değeri USER olan kullanıcılar sadece [GET] requesti atabilirler.
- * role değeri ADMIN olan kullanıcılar [GET][POST][PUT][DELETE] requestlerinin tamamını atabilirler.
+Tablo ilişiklerini görmek için [ktphn.png] dosyasına göz atın.
+
+Yazdığınız sorguları buradan test edebilirsiniz: [https://ergineer.com/assets/materials/fkg36so5-kutuphanebilgisistemi-sql/]
+
+
+
+# Görevler
+Aşağıda istenilen sonuçlara ulaşabilmek için gerekli SQL sorgularını yazın. 
+
+
+
+	1) ÖRNEK SORU: Yazar tablosunu KEMAL UYUMAZ isimli yazarı ekleyin.
+	
+
+	
+	2) Biyografi türünü tür tablosuna ekleyiniz.
+	
+	
+	3) 10A sınıfı olan ÇAĞLAR ÜZÜMCÜ isimli erkek, sınıfı 9B olan LEYLA ALAGÖZ isimli kız ve sınıfı 11C olan Ayşe Bektaş isimli kız öğrencileri tek sorguda ekleyin. 
+	
+	
+	4) Öğrenci tablosundaki rastgele bir öğrenciyi yazarlar tablosuna yazar olarak ekleyiniz.
+	
+	
+	5) Öğrenci numarası 10 ile 30 arasındaki öğrencileri yazar olarak ekleyiniz.
+	
+	
+	6) Nurettin Belek isimli yazarı ekleyip yazar numarasını yazdırınız.
+	(Not: Otomatik arttırmada son arttırılan değer @@IDENTITY değişkeni içinde tutulur.)
+	
+	
+	7) 10B sınıfındaki öğrenci numarası 3 olan öğrenciyi 10C sınıfına geçirin.
+	
+	
+	8) 9A sınıfındaki tüm öğrencileri 10A sınıfına aktarın
+	
+	
+	9) Tüm öğrencilerin puanını 5 puan arttırın.
+	
+	
+	10) 25 numaralı yazarı silin.
+
+
+	11) Doğum tarihi null olan öğrencileri listeleyin. (insert sorgusu ile girilen 3 öğrenci listelenecektir)
+	
+	
+	12) Doğum tarihi null olan öğrencileri silin. 
+	
+	
+	13) Kitap tablosunda adı a ile başlayan kitapların puanlarını 2 artırın.
+	
+	
+	14) Kişisel Gelişim isimli bir tür oluşturun.
+	
+	
+	15) Kitap tablosundaki Başarı Rehberi kitabının türünü bu tür ile değiştirin.
+	
+	
+	16) Öğrenci tablosunu kontrol etmek amaçlı tüm öğrencileri görüntüleyen "ogrencilistesi" adında bir prosedür oluşturun.
+	
+	
+	17) Öğrenci tablosuna yeni öğrenci eklemek için "ekle" adında bir prosedür oluşturun.
+	
+	
+	18) Öğrenci noya göre öğrenci silebilmeyi sağlayan "sil" adında bir prosedür oluşturun.
+	
+	
+	19) Öğrenci numarasını kullanarak kolay bir biçimde öğrencinin sınıfını değiştirebileceğimiz bir prosedür oluşturun.
+	
+	
+	20) Öğrenci adı ve soyadını "Ad Soyad" olarak birleştirip, ad soyada göre kolayca arama yapmayı sağlayan bir prosedür yazın.
+	
+	
+	21) Daha önceden oluşturduğunu tüm prosedürleri silin.
+	
+	
+	#Esnek görevler (Esnek görevlerin hepsini Select in Select ile gerçekleştirmeniz beklenmektedir.)
+	22) Select in select yöntemiyle dram türündeki kitapları listeleyiniz.
+	
+	
+	23) Adı e harfi ile başlayan yazarların kitaplarını listeleyin.
+	
+	
+	24) Kitap okumayan öğrencileri listeleyiniz.
+	
+	
+	25) Okunmayan kitapları listeleyiniz
+
+	
+	26) Mayıs ayında okunmayan kitapları listeleyiniz.
